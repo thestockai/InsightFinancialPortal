@@ -19,6 +19,69 @@
 
 
 
+  
+</head>
+
+
+<body>
+  <div class="container">
+    <p id="ticker-title">[Current Ticker Name]</p>
+  </div>
+  <div id='myDiv'>
+    <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
+  <div class="container">
+    <label for="ticker">Ticker</label>
+    <div class="input-group-append">
+      <input type="text" class="form-control" placeholder="AAPL" id="ticker">
+      <button class="btn btn-outline-secondary" type="button" id="submit">Search</button>
+    </div>
+
+  </div>
+  <div class="container">
+    <!-- <p id="article-title">[Article Title] </p>
+    <p id="article-url"> [Article URL] </p> -->
+    <a id="article-url" href="#">
+      <p id="article-title">[Article Title]</p>
+    </a>
+
+    <img id="article-img"
+      src="https://media.idownloadblog.com/wp-content/uploads/2018/07/Apple-logo-black-and-white.png">
+  </div>
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div id="tradingview_e1de3"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
+        target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+      new TradingView.widget(
+        {
+          "width": 980,
+          "height": 610,
+          "symbol": "NASDAQ:AAPL",
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "light",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "allow_symbol_change": true,
+          "container_id": "tradingview_e1de3"
+        }
+      );
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+
+  <!-- <div class="container">
+    <label for="article_number">Article Number</label>
+    <div class="input-group-append">
+      <input type="text" class="form-control" placeholder="0" id="article_number">
+      <button class="btn btn-outline-secondary" type="button" id="submit">Article Number</button>
+    </div>
+  -->
   <script>
     var currentTicker = "AAPL";
     var tickerJson;
@@ -148,67 +211,6 @@
     // });
 
   </script>
-</head>
-
-
-<body>
-  <div class="container">
-    <p id="ticker-title">[Current Ticker Name]</p>
-  </div>
-  <div id='myDiv'>
-    <!-- Plotly chart will be drawn inside this DIV -->
-  </div>
-  <div class="container">
-    <label for="ticker">Ticker</label>
-    <div class="input-group-append">
-      <input type="text" class="form-control" placeholder="AAPL" id="ticker">
-      <button class="btn btn-outline-secondary" type="button" id="submit">Search</button>
-    </div>
-
-  </div>
-  <div class="container">
-    <!-- <p id="article-title">[Article Title] </p>
-    <p id="article-url"> [Article URL] </p> -->
-    <a id="article-url" href="#">
-      <p id="article-title">[Article Title]</p>
-    </a>
-
-    <img id="article-img"
-      src="https://media.idownloadblog.com/wp-content/uploads/2018/07/Apple-logo-black-and-white.png">
-  </div>
-  <!-- TradingView Widget BEGIN -->
-  <div class="tradingview-widget-container">
-    <div id="tradingview_e1de3"></div>
-    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
-        target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script type="text/javascript">
-      new TradingView.widget(
-        {
-          "width": 980,
-          "height": 610,
-          "symbol": "NASDAQ:AAPL",
-          "interval": "D",
-          "timezone": "Etc/UTC",
-          "theme": "light",
-          "style": "1",
-          "locale": "en",
-          "toolbar_bg": "#f1f3f6",
-          "enable_publishing": false,
-          "allow_symbol_change": true,
-          "container_id": "tradingview_e1de3"
-        }
-      );
-    </script>
-  </div>
-  <!-- TradingView Widget END -->
-
-  <!-- <div class="container">
-    <label for="article_number">Article Number</label>
-    <div class="input-group-append">
-      <input type="text" class="form-control" placeholder="0" id="article_number">
-      <button class="btn btn-outline-secondary" type="button" id="submit">Article Number</button>
-    </div>
-</body> -->
+</body> 
 
 </html>
