@@ -23,6 +23,14 @@ router.get('/plot',async(ctx)=>{
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./views/dynamic_plot.html')
 })
+router.get('/dynamic_chart',async(ctx)=>{
+	ctx.response.type = 'html'
+	ctx.response.body = fs.createReadStream('./views/IvyOnlineTest3.html')
+})
+router.get('/charts',async(ctx)=>{
+	ctx.response.type = 'html'
+	ctx.response.body = fs.createReadStream('./views/charts.html')
+})
 app.use(static(path.join((__dirname))))
 app.use(router.routes())
 app.use(router.allowedMethods({}))
