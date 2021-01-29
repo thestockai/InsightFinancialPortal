@@ -5,7 +5,16 @@ const path = require('path')
 const router = new Router()
 router.get('/',async (ctx)=>{
     ctx.response.type = 'html'
-    ctx.response.body = fs.createReadStream('./views/welcome.html')
+    ctx.response.body = fs.createReadStream('./views/insightFinance.html')
+})
+router.get('/sign_in',async(ctx)=>{
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/sign_in.html')
+})
+router.get('/sign_up',async(ctx)=>{
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/sign_up.html')
+
 })
 router.get('/test',async (ctx)=>{
     ctx.response.type = 'html'
