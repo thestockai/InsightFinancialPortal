@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.pagination-beta.js"></script>
+    <script type="text/javascript" src="../js/grid.js"></script>
+    <link href="../css/jquery.pagination.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table {
+            position: relative;
+            width: 100%;
+            display: block;
+        }
+
+        thead {
+            float: left;
+        }
+
+        tbody tr {
+            display: inline-block;
+        }
+
+        thead tr th {
+            color: black;
+
+        }
+
+        th,
+        td {
+            border: 0.01pt solid black;
+            height: 30px;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="dropdown">
+        <select id="company_select">
+            <option value="0">None</option>
+            <option value="1">Walt Disney Company</option>
+        </select>
+    </div>
+    <h2 id="company">Company</h2>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Income Statement</th>
+                <th>Sales</th>
+                <th>Gross Income</th>
+                <th>EBIT(Operating Income)</th>
+                <th>Consolidated Net Income</th>
+                <th>Net Income</th>
+                <th>Per Share</th>
+                <th>EPS(recuming)</th>
+                <th>EPS</th>
+                <th>Eamings Persistence</th>
+                <th>Dividends Per Share</th>
+                <th>EBITDA</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(
+        $("#company_select").change(function(){
+            $("#company").text($("#company_select option:selected").text())
+            $("#tbody").empty()
+            var company_index=$(this).val()
+            if(company_index !=0){
+            var options={url:'./json/1.json',index:company_index,colums:[
+                'Time','Income Statement','Sales','Gross Income','EBIT(Operating Income)','Consolidated Net Income',
+                'Net Income','Per Share','EPS(recuming)','EPS','Eamings Persistence','Dividends Per Share','EBITDA'
+            ]}
+            $("#company").grid(options)}//grid is a function which has been defigned
+            
+        }))
+    </script>
+</body>
+
+</html>

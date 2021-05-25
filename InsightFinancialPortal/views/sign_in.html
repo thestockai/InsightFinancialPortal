@@ -1,0 +1,97 @@
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="./css/style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <title>Gmail login page source code download</title>
+    <script src="./js/jquery-3.5.1.js"></script>
+</head>
+
+<body>
+    <center>
+        <div class="base">
+
+            <div id="info1">
+                The Stocks.Ai
+            </div>
+            <div id="info2">
+                Sign in to continue
+            </div>
+            <div id="form1" action="/SignIn" method="POST">
+                <div id="form-img">
+                    <img src="./image/profile-img.png" width="99" height="99" />
+                </div>
+                <div id="mailbox">
+                    <input placeholder="yourEmail" type="mail" name="name" id="name"
+                        style="width:270px; height:42px; border: solid 1px #c2c4c6; font-size:16px; padding-left:8px;" />
+                </div>
+                <div id="password">
+                    <input placeholder="password" type="password" id='password2' name="password"
+                        style="width:270px; height:42px; border: solid 1px #c2c4c6; font-size:16px; padding-left:8px;" />
+                </div>
+                <div>
+                    <input type="submit" id="button2" value="Sign In" />
+                </div>
+                <div id="info3">
+                    <a href="#">Need help?</a>
+                </div>
+            </div>
+            <div id="info4">
+                <a href="#">Create account</a>
+            </div>
+            <div id="info5">
+                One Google Account for everything Google
+            </div>
+
+
+            <div id="bottom">
+
+            </div>
+        </div>
+    </center>
+    <script>
+        $(document).ready(function () {
+            $('#button2').click(function () {
+                var name = $('#name').val()
+                var password = $('#password2').val()
+                // console.log(name, password);
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+                if (name == '') {
+                    alert('please enter email')
+                }
+                else {
+                    issock = reg.test(name)
+                    if (issock) {
+                        $.ajax(
+                            {
+                                type: 'post',
+                                url: '/SignIn',
+                                data: { 'name': name, 'password': password },
+                                dataType: 'json',
+                                success: function (result) {
+                                    if (result.code == '200') {
+                                        alert('successfully loged in!')
+                                        window.location.href = result.url
+                                    }
+                                    else if(result.code == '201'){
+                                        alert('The account does not exist')
+                                    }
+                                    else {
+                                        alert('The account number or password is incorrect')
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    else {
+                        alert('The mailbox is in the wrong format')
+                    }
+
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
