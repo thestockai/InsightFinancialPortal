@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> IvyOnline Main</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Google Font #to be changed -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
+
+
+  <!-- Bootstrap CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="./css/styling.css">
+
+  <script src='./js/plotly-latest.min.js'></script>
+  <script src="./js/jquery-3.5.1.js" ></script>
+
+  <script>
+
+    var currentTicker = "AAPL";
+    var tickerJson;
+    var articleNumber = 0;
+
+    function changeArticle(title, url, image_url) {
+      $("#article-title").html(title);
+      $("#article-url").attr("href", url);
+      $("#article-img").attr("src", image_url);
+    }
+    function getArticle(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[0]);
+          var title = data.data[0].title;
+          var url = data.data[0].news_url;
+          var image_url = data.data[0].image_url;
+          changeArticle(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    $(document).ready(function () {
+      $("#submit").click(function () {
+        changeTicker($("#ticker").val());
+        getArticle($("#ticker").val());
+        // changeArticle($("#article_number".val()));
+      });
+      var startingTicker = window.location.search.substring(1);
+      // var article_num = $("#article_number".val());
+      if (startingTicker.length > 4 || startingTicker.length < 1) {
+        startingTicker = "AAPL";
+      }
+
+      changeTicker(startingTicker);
+      // changeArticle(article_num);
+      getArticle(startingTicker);
+    });
+
+    
+
+  </script>
+</head>
+
+
+<body>
+  <!-- NavBar -->
+  <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand mb-0 h1 text-success" href="#">IN$GHT.AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Series</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href='AboutUS'>About Us</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              More
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Career</a></li>
+              <li><a class="dropdown-item" href="#">Our Values</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Sign Up for More!</a></li>
+              <li><a id="admain_login" href="/admain_login"></a></li>
+            </ul>
+          </li>
+
+        </ul>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
+        <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Cover section -->
+
+  <section id="cover-img" class="container-fluid px-0">
+
+    <h2>
+      Power Your Portfolio with AI
+    </h2>
+
+    <button id="sign-up-cover" class="btn btn-success" type="button">Sign up today</button>
+
+  </section>
+
+
+  <!-- Ticker DIV -->
+
+  <div id="ticker-search" class="container">
+
+    <!-- Ticker label -->
+    <h2 id="ticker-label">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-rss"
+        viewBox="0 0 16 16">
+        <path
+          d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+        <path
+          d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z" />
+      </svg>
+
+      Latest News
+    </h2>
+
+    <label id="search-ticker-label" for="ticker">Search ticker</label>
+
+    <form class="d-flex">
+      <input type="text" class="form-control me-2" placeholder="AAPL" id="ticker" aria-label="Search">
+      <button class="btn btn-outline-success" type="button" id="submit">Search</button>
+    </form>
+
+  </div>
+
+  <!-- News label-->
+  <div id="news-container" class="container">
+    <p id="ticker-title-label">Latest news about </p>
+    <p id="ticker-title">[Current Ticker Name]</p>
+  </div>
+
+  <!-- News-->
+  <div id="news" class="container">
+
+    <a id="article-url" href="#">
+      <p id="article-title">[Article Title]</p>
+    </a>
+
+    <img id="article-img"
+      src="https://media.idownloadblog.com/wp-content/uploads/2018/07/Apple-logo-black-and-white.png">
+
+  </div>
+
+  <!-- Ticker label -->
+  <div id="reg-container" class="container">
+
+    <h2 id="ticker-label">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-graph-up"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z" />
+      </svg>
+      Historical stock price
+    </h2>
+
+  </div>
+
+  <!-- News label-->
+  <div id="news-container" class="container">
+    <p id="ticker-title-label">Stock price of company</p>
+  </div>
+
+
+
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div id="tradingview_e1de3"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener"
+        target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+      new TradingView.widget(
+        {
+          "width": 980,
+          "height": 610,
+          "symbol": "NASDAQ:AAPL",
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "light",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "allow_symbol_change": true,
+          "container_id": "tradingview_e1de3"
+        }
+      );
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+
+
+  <!-- myPlot> here is self defined plot
+  <!-- div id='myDiv' class="container">
+    <!-- Plotly chart will be drawn inside this DIV -->
+  <!--/div> 
+
+    <!-- Ticker label -->
+  <div id="reg-container" class="container">
+
+    <h2 id="ticker-label">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-clipboard-data"
+        viewBox="0 0 16 16">
+        <path
+          d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+        <path
+          d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+        <path
+          d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+      </svg>
+      Stock price prediction
+    </h2>
+
+  </div>
+  <div id='selectionBar'>
+    <label for="company_selected">Companies：</label>
+    <input type="text" id="company_selected" list = "company-list" >
+    <button id='prediction'>Search</button>
+    <!--
+      'APEI','AAL','AAPL','AMC','AMD','AMZN','AZN','BA','BAC','BB','BILI','BLCT','BABA','BB','BTBT','BNGO','BLNK'
+,'BAC','CBAT','CCL','CLF','CRM','CLPR','DIS','DBX','DGLY','F','FB','GE','GM','GOOG','KO',
+'LRN','LI','MSFT','NVDA','PTON','PLTR','STX','TCEHY','TSLA','TSM','TWOU','TLRY','FSLY','FUBO','GPRO',
+'GOLD','SQ','SOLO','SDC','SUMO','TOUR','JNJ','JD','JMIA','LAZR','INO','NIO',
+'INTC','AU','USO','PDD','QS','REGI','RMO','RLX','GE','IVR','KXIN','FROG','U','VJET','WPG','WOOF','X','XPEV'
+    -->
+    <datalist id = "company-list">
+        <option>AU</option>
+        <option>APEI</option>
+        <option>AAL</option>
+        <option>AAPL</option>
+        <option>AMC</option>
+        <option>AMD</option>
+        <option>AMZN</option>
+        <option>AZN</option>
+        <option>BA</option>
+        <option>BAC</option>
+        <option>BB</option>
+        <option>BILI</option>
+        <option>BLCT</option>
+        <option>BABA</option>
+        <option>BTBT</option>
+        <option>BNGO</option>
+        <option>BLNK</option>
+        <option>CBAT</option>
+        <option>CCL</option>
+        <option>CLF</option>
+        <option>CLPR</option>
+        <option>CRM</option>
+        <option>DIS</option>
+        <option>DBX</option>
+        <option>DGLY</option>
+        <option>F</option>
+        <option>FSLY</option>
+        <option>FUBO</option>
+        <option>FB</option>
+        <option>GE</option>
+        <option>GM</option>
+        <option>KO</option>
+        <option>MSFT</option>
+        <option>STX</option>
+        <option>TSLA</option>
+        <option>LAZR</option>
+        <option>LRN</option>
+        <option>LI</option>
+        <option>INO</option>
+        <option>INTC</option>
+        <option>NIO</option>
+        <option>TCEHY</option>
+        <option>TSM</option>
+        <option>TWOU</option>
+        <option>TLRY</option>
+        <option>TOUR</option>
+        <option>CHGG</option>
+        <option>GOOG</option>
+        <option>GPRO</option>
+        <option>GOLD</option>
+        <option>JNJ</option>
+        <option>JD</option>
+        <option>JMIA</option>
+        <option>LUV</option>
+        <option>NVDA</option>
+        <option>PTON</option>
+        <option>PLTR</option>
+        <option>PDD</option>
+        <option>SQ</option>
+        <option>SOLO</option>
+        <option>SDC</option>
+        <option>SUMO</option>
+        <option>TICKER</option>
+        <option>USO</option>
+        <option>QS</option>
+        <option>REGI</option>
+        <option>RMO</option>
+        <option>RLX</option>
+        <option>IVR</option>
+        <option>KXIN</option>
+        <option>FROG</option>
+        <option>U</option>
+        <option>VJET</option>
+        <option>WPG</option>
+        <option>WOOF</option>
+        <option>X</option>
+        <option>XPEV</option>
+    </datalist>
+  </div>
+  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="./js/canvasjs.min.js"></script>
+<script src="./js/plot_candleStick.js"></script>
+<script>
+  plot_candleStick('AAPL')
+</script>
+  <!-- News label-->
+  <div id="news-container" class="container">
+    <p id="ticker-title-label">prediction analysis</p>
+  </div>
+  <div id="chartContainer_analysis1" style="height: 300px; width: 100%;"></div>
+  <!-- <div id="chartContainer_analysis2" style="height: 300px; width: 100%;"></div> -->
+  
+  <div id="plot_dynamic" style="height: 300px; width: 100%;"></div>
+  <script src="./js/plot_analysis.js"></script>
+  <script src="./js/My_plot.js"></script>
+  <script>
+    plot_candleStick_ana('AAPL')
+    plot_stuff('AAPL')
+  </script>
+
+  <!-- Finanical label -->
+  <div id="reg-container" class="container">
+    <script>
+     
+    </script>
+
+    <h2 id="ticker-label">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" fill="currentColor" class="bi bi-bar-chart"
+        viewBox="0 0 16 16">
+        <path
+          d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z" />
+      </svg>
+      <!-- Finanical statements -->
+    </h2>
+
+  </div>
+
+  <!-- Financial label-->
+  <!-- <div id="news-container" class="container">
+    <p id="ticker-title-label">Finanical statement analysis</p>
+  </div>
+
+  <div id="excel-statement" class="container">
+    <iframe height=400 width=1000
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQx_Yvwi_S5dgBQs56OfS_-jZj0DqJAHCgZ1FtpQrmKWN3MvmKzIXD-hLDBaJpnu5Wx66NNW0mdbUWu/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+  </div> -->
+  <!-- Bootstrap -->
+
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/plot_candleStick.js"></script>
+    <script>
+        $('#sign_in').click(function(){
+          window.location.href = '/sign_in'
+        })
+        $('#sign_up').click(function(){
+          window.location.href = '/sign_up'
+        })
+    </script>
+    
+    <script>
+        $('#prediction').click(function(){
+          var company_selected = $('#company_selected').val()
+          $('#chartContainer').empty()
+          $('#chartContainer_analysis1').empty()
+          $('#plot_dynamic').empty()
+          plot_candleStick(company_selected)
+          plot_candleStick_ana(company_selected)
+          plot_stuff(company_selected)
+        })
+    </script>   
+
+  <!-- Power Bi Chart-->
+  <!-- <div id="power_bi_chart" style="width:100%; text-align: center;" >
+    <iframe 
+    width="1024" 
+    height="612" 
+    src="https://app.powerbi.com/view?r=eyJrIjoiNjY3MmJhMGItZDc5YS00MjAzLThmYTQtYjQ0NjNiYWJiMjExIiwidCI6IjhjMjdmOTg1LTVjNDctNDBiYi04ODA0LWZiMmIzOTAzMDBjMSJ9&pageName=ReportSectionf7a0ba1e7111e1fe6bbd" 
+    frameborder="0" 
+    allowFullScreen="true"
+    ></iframe>
+  </div> -->
+   <!--Sentiment analysis in insightFinance.html -->
+ <div id="sentiment-analysis">
+  <h3>Sentiment Analysis</h3>
+  <hr/>
+  <label for="sentimentTicker">Stock ticker:</label><br>
+  <input type="text" id="sentimentTicker" name="sentimentTicker" ><br>
+  <input type="submit" id="sentimentAnalysis"  value="Search"><br>
+  <img id="sentimentImg" style="display: none;" >
+</div>
+<script>
+  $(document).ready(function () {
+        $('#sentimentAnalysis').click(function () {
+            //reset the image display
+            document.getElementById("sentimentImg").style.display = "none";
+            document.getElementById("sentimentImg").src = "";
+
+            var sentimentTicker = $('#sentimentTicker').val()
+            console.log("sentimentTicker",sentimentTicker)
+            $.ajax(
+              {
+                type: 'get',
+                url: '/sentimentAnalysis',
+                data: { 'sentimentTicker': sentimentTicker},
+                dataType: 'json',
+                success: function (res) {
+                  console.log("data",res)
+                  var aftetSplit = res.filename.split(",")
+                  var originPath = aftetSplit[2].split("/")
+                  if (res.code == '200') {
+                    document.getElementById("sentimentImg").src = "./images/" + originPath[3];
+                    document.getElementById("sentimentImg").style.display = "initial";
+                    alert('successful')
+                  }
+                  
+                }
+              })
+        })
+      })
+</script>
+</body>
+
+</html>

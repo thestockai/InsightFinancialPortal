@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Google Font #to be changed -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
+
+
+        <!-- Bootstrap CSS -->
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <!-- Local CSS -->
+        <link rel="stylesheet" href="./css/styling.css">
+
+        <script src='./js/plotly-latest.min.js'></script>
+        <script src="./js/jquery-3.5.1.js" ></script>
+        <style>
+            .about-section {
+                margin: 100px auto 100px auto;
+                width: 70%;
+                padding: 100px;
+                font-size: 25px;
+                font-family: 'Source Sans Pro', arial, sans-serif;
+                text-align: center;
+                }
+            .subtitle{
+                margin: auto;
+                width: 70%;  
+            }
+            .container{
+                display: flex;
+                justify-content: center;
+            }
+            /*Card CSS style*/
+            .card {
+                width: 20%; 
+                margin-top: 25px;
+                margin-left: 90px;
+                margin-right: 90px;
+                margin-bottom: 25px;
+                border: none;
+                transition: 0.3s;
+                text-align: center;
+            }
+            .card-description {
+                color: grey;
+                font-size: 16px;
+            }
+            /* Add some padding inside the card container */
+            .card-container {
+                padding: 16px;
+            }
+            .image-card {
+                border-radius: 50%;
+                width: 128;
+                height: 128;
+            }
+            .footer {
+                height: 100px;
+                background-color: #f8f9fa;
+                color: #198754;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                margin-bottom: 0px;
+                text-align: center;
+            }
+            .progress-containr{
+                margin: 20px auto 0 auto;
+                width: 70%;
+                display: flex;
+                justify-content: center;   
+            }
+            .progress-text{
+                margin: 0 30px 0 auto;
+                width: 100%;
+                font-size: 20px;
+                font-family: 'Source Sans Pro', arial, sans-serif;
+                text-align: center;
+            }
+            .progress-image{
+                margin-left: 30px;
+                width: 250px; 
+                height: 200px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- NavBar -->
+        <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand mb-0 h1 text-success" href="#">IN$GHT.AI</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Series</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href='about'>About Us</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Career</a></li>
+                        <li><a class="dropdown-item" href="#">Our Values</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign Up for More!</a></li>
+                        <li><a id="admain_login" href="/admain_login"></a></li>
+                        </ul>
+                    </li>
+
+                    </ul>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
+                    <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
+
+                </div>
+            </div>
+        </nav>
+
+        <!--The brief information and description-->
+        <div class="about-section">
+            <h1 >Our Reason</h1><br>
+            <p style="color: gray; width: 80%; margin: auto;">
+                IvyOnline Academy is an education based startup through Cornell eLab, a startup accelerator program.   
+                We aim to help enrich high school students’ applications with higher education experience 
+                from research training and mini projects through collaboration with top universities.
+            </p>
+        </div>
+        <div class="subtitle">
+            <h3>Founders</h3><hr>
+        </div><br>
+        <div class="container">
+            <div class="card">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+        </div>
+        <div class="subtitle">
+            <h3>Academic board</h3><hr>
+        </div>
+        <div class="container">
+            <div class="card ">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card ">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+        </div>
+        <div class="subtitle">
+            <h3>Team</h3><hr>
+        </div>
+        <div class="container">
+            <div class="card ">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/images/IMG_6587.JPG" alt="Image" style="width:100%" class="image-card">
+                <div class="card-container ">
+                  <h4>Mi Yan</h4>
+                  <p class="card-description">Master's Student in the Civic Ecology Lab, 
+                      Department of Natural Resources, 
+                      College of Agriculture and Life Sciences, 
+                      Cornell University</p>
+                </div>
+            </div>
+        </div>
+        <div class="progress-containr">
+            <div class="progress-text">
+                    <h4>Progress</h4><br>
+                    <p style="color: gray;">Our team is working hard towards making research opportunities that span across varied interests. 
+                        We have launched courses in multiple fields and hope to improve our curriculum through each season to make the experience for the students most beneficial in their college experience. 
+                        We are starting to expand into other areas of studies including Biology, with courses that will be launching this month. 
+                        Help us provide better and more opportunities for High School research education!</p>
+            </div>
+            <img src="/images/About_us_Image01.webp" class="progress-image">
+        </div>
+        <br>
+
+
+        <div class="footer">
+            <hr>
+            <p>Copyright © 2020 Ivy Online Academy - All Rights Reserved.</p>
+        </div>
+    </body>
+
+</html>
