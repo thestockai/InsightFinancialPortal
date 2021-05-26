@@ -55,7 +55,7 @@ function Add_User(user,callback) {
 }
 function Chg_User(name) {
     var connection = require('./get_sql')
-    add_arg = ['嘿嘿嘿']
+    add_arg = ['xxxx']
     connection.query(del_sql, add_arg, function (err, result, fields) {
         if (err) console.log(err)
         else {
@@ -67,7 +67,7 @@ function Chg_User(name) {
 }
 function Del_User(name) {
     var connection = require('./get_sql')
-    add_arg = ['嘿嘿嘿']
+    add_arg = ['xxxx']
     connection.query(del_sql, add_arg, function (err, result, fields) {
         if (err) console.log(err)
         else {
