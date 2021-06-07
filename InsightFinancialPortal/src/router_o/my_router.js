@@ -26,6 +26,21 @@ router.get('/AboutUs', async (ctx) => {
     ctx.response.body = fs.createReadStream('./views/about.html')
     // /sign_in_with_google_account.html')
 })
+router.get('/infoStock', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/information.html')
+    // /sign_in_with_google_account.html')
+})
+router.get('/analysis', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/analysis.html')
+    // /sign_in_with_google_account.html')
+})
+router.get('/blog', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/blog.html')
+    // /sign_in_with_google_account.html')
+})
 router.get('/admain_login', async (ctx) => {
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream()
