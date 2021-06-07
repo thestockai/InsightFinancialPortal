@@ -67,19 +67,6 @@ h2 {
     color: #40916c;
 }
 
-#news {
-    background-color: aliceblue; 
-    border-radius: 5px;
-    box-shadow: 7px 7px 5px 7px #888888;
-    width: 60%;
-    height: 480px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 1em;
-}
-
 #excel-statement {
     display: flex;
     flex-direction: column;
@@ -91,3 +78,28 @@ h2 {
 svg {
     margin-right: 15px;
 }
+
+.container ul {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+    margin: 32px 0;
+}
+
+.container li {
+    margin: 0 10px;
+    flex-basis: calc(50% - 20px);  /* width minus margins */
+}
+
+.container img {
+    width: 100%;                   /* occupy 100% width of li container */
+    height: auto;
+}
+
+.top {
+    margin-top: 40px;
+}
+/* tablet/phone view */
+@media (max-width: 950px) {
+    
+  }
