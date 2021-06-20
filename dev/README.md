@@ -1,6 +1,6 @@
 # TheStock.AI
 
-### Installing Docker
+## Installing Docker
 
 ---
 
