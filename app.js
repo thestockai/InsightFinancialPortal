@@ -15,7 +15,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   var my_path = decodeURIComponent(url.parse(req.url).pathname);
   res.writeHead(200, {'content-type' : 'text/html'})
-  fs.createReadStream('index.html').pipe(res)
+  fs.createReadStream('util/index.html').pipe(res)
 });
 //
 // fs.readFile('./IvyOnlineTest3.html', function (err, html) {
