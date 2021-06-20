@@ -2,8 +2,6 @@
 
 ## Installing Docker
 
----
-
 See [https://docs.docker.com/install/](https://docs.docker.com/install/) for instructions on installing docker.
 
 ## Starting the Docker
