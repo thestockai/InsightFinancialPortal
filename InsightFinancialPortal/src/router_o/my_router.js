@@ -36,6 +36,11 @@ router.get('/analysis', async (ctx) => {
     ctx.response.body = fs.createReadStream('./views/analysis.html')
     // /sign_in_with_google_account.html')
 })
+router.get('/feature', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/feature.html')
+    // /sign_in_with_google_account.html')
+})
 router.get('/blog', async (ctx) => {
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./views/blog.html')
