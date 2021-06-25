@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> IvyOnline Main</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Google Font #to be changed -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
+
+
+  <!-- Bootstrap CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="./css/styling.css">
+
+  <script src='./js/plotly-latest.min.js'></script>
+  <script src="./js/jquery-3.5.1.js" ></script>
+
+  <script>
+    var submitted = false;
+    var currentTicker = "AAPL";
+    var tickerJson;
+    var articleNumber = 0;
+    //0
+    function changeArticle(title, url, image_url) {
+      $("#article-title").html(title);
+      $("#article-url").attr("href", url);
+      $("#article-img").attr("src", image_url);
+    }
+    function getArticle(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[0]);
+          var title = data.data[0].title;
+          var url = data.data[0].news_url;
+          var image_url = data.data[0].image_url;
+          changeArticle(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+    
+    //1
+    function changeArticle1(title, url, image_url) {
+      $("#article-title1").html(title);
+      $("#article-url1").attr("href", url);
+      $("#article-img1").attr("src", image_url);
+    }
+    function getArticle1(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[1]);
+          var title = data.data[1].title;
+          var url = data.data[1].news_url;
+          var image_url = data.data[1].image_url;
+          changeArticle1(title, url, image_url);
+        }
+      });
+    }
+
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker1(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title1").html(currentTicker);
+      $("title1").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    //2
+    function changeArticle2(title, url, image_url) {
+      $("#article-title2").html(title);
+      $("#article-url2").attr("href", url);
+      $("#article-img2").attr("src", image_url);
+    }
+    function getArticle2(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[2]);
+          var title = data.data[2].title;
+          var url = data.data[2].news_url;
+          var image_url = data.data[2].image_url;
+          changeArticle2(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker2(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    //3
+    function changeArticle3(title, url, image_url) {
+      $("#article-title3").html(title);
+      $("#article-url3").attr("href", url);
+      $("#article-img3").attr("src", image_url);
+    }
+    function getArticle3(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[3]);
+          var title = data.data[3].title;
+          var url = data.data[3].news_url;
+          var image_url = data.data[3].image_url;
+          changeArticle3(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker3(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    $(document).ready(function () {
+      $("#submit").click(function () {
+        changeTicker($("#ticker").val());
+        getArticle($("#ticker").val());
+        changeTicker1($("#ticker").val());
+        getArticle1($("#ticker").val());
+        changeTicker2($("#ticker").val());
+        getArticle2($("#ticker").val());
+        changeTicker3($("#ticker").val());
+        getArticle3($("#ticker").val());
+        // changeArticle($("#article_number".val()));
+      });
+      var startingTicker = window.location.search.substring(1);
+      // var article_num = $("#article_number".val());
+      if (startingTicker.length > 4 || startingTicker.length < 1) {
+        startingTicker = "AAPL";
+      }
+
+      changeTicker(startingTicker);
+      // changeArticle(article_num);
+      getArticle(startingTicker);
+      changeTicker1(startingTicker);
+      getArticle1(startingTicker);
+      changeTicker2(startingTicker);
+      getArticle2(startingTicker);
+      changeTicker3(startingTicker);
+      getArticle3(startingTicker);
+    });
+
+    
+
+  </script>
+</head>
+
+
+<body>
+  <!-- NavBar -->
+  <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand mb-0 h1 text-success" href="#">IN$GHT.AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href='AboutUS'>About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href='infoStock'>Stock Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href='infoStock'>Stock Analysis</a>
+          </li>
+
+
+        </ul>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
+        <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Cover section -->
+
+  <section id="cover-img" class="container-fluid px-0">
+
+    <h2>
+      Power Your Portfolio with AI
+    </h2>
+
+    <button id="sign-up-cover" class="btn btn-success" type="button">Sign up today</button>
+
+  </section>
+
+
+</body>
+
+</html>

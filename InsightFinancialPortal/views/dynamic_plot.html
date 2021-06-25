@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="../static/js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.pagination-beta.js"></script>
+    <script type="text/javascript" src="../static/js/grid.js"></script>
+    <link href="../static/css/jquery.pagination.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .company {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .company:hover {
+            background-color: #111;
+        }
+
+        /*鼠标移动到选项上修改背景颜色 */
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 id="Industry">Industry/Business</h2>
+        <div class="dropdown">
+            <select id="Industry_select">
+                <option value="0">Industry/Business</option>
+                <option value="1">Oil&Gas</option>
+                <option value="2">Semiconductor</option>
+                <option value="3">Restaurant</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <br>
+        <ul id="companies">
+            <li><a href="#home">None</a></li>
+            <li><a href="#news">None</a></li>
+            <li><a href="#contact">None</a></li>
+            <li><a href="#about">None</a></li>
+        </ul>
+        <span >
+            <img id="image" src="" alt="">
+        </span>
+        <script>
+            $(document).ready(
+                $("#Industry_select").change(function () {
+                    var Industry_name = $("#Industry_select option:selected").text()
+                    $("#Industry").text(Industry_name)
+                    var Industry_index = $(this).val()
+                    $("#companies").empty()
+                    // alert(Industry_index)
+
+                    if (Industry_index != 0) {
+                        $.ajax({
+                            url: "./json/Industry.json",
+                            type: "get",
+                            dataType: "json",
+                            success: function (result) {
+                                companies = result[Industry_name]
+                                // console.log(companies)
+                                for (var c = 0; c < companies.length; ++c) {
+                                    html = "<li class='company'>" + companies[c] + "</li>"
+                                    $("#companies").append(html)
+                                }
+                            }
+                        }
+                        )
+                    }
+                }
+
+                ))
+        </script>
+        <script>
+           $(document).ready(
+               $('ul').on('mouseover','.company',function(){
+                   $("#image").empty()
+                   var company_name = this.innerHTML
+                   var Industry_name = $("#Industry").text()
+                   var html="static/ML_Results"
+                   html+="/"+Industry_name
+                   html+="/"+company_name
+                   html+=".png"
+                //    console.log(html)
+                   $('#image').attr("src",html)
+               })
+           )
+        </script>
+</body>
+
+</html>

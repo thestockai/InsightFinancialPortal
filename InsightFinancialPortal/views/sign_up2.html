@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-signin-client_id"
+        content="184609219583-voi158k0cb3n391juuni3v40uh7tghik.apps.googleusercontent.com">
+    <title>Sign Up to Insight.AI</title>
+    <link rel="stylesheet" type="text/css" href="./css/style_of_sign_up.css">
+</head>
+
+<body>
+    <div class="dowebok">
+        <div class="logo"></div>
+        <div class="form-item" >
+            <input id="username_email" type="text" autocomplete="off" placeholder="email">
+            <p class="tip" id='tip_of_email'>Please type in valid email</p>
+        </div>
+        <div class="form-item">
+            <input id="password" type="password" autocomplete="off" placeholder="password">
+            <p class="tip" id='tip_of_password'>incorrect password or email</p>
+        </div>
+        <div class="form-item">
+            <input id="password_conform" type="password" autocomplete="off" placeholder="password Conform">
+            <p class="tip" id='tip_of_password_conform'>password is not same</p>
+        </div>
+        <div class="form-item" id="verification">
+            <input id="verification_code" autocomplete="off" placeholder="verification code">
+            <p class="tip" id='tip_of_verification'>verification code does not exist</p>
+            <button id="send_code_button">Send Codes</button>
+        </div>
+        <div class="form-item"><button id="submit">submit</button></div>
+        <div class="form-item" id="my-signin2"></div>
+    </div>
+    <script src="./js/google_signIn_util.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src='./js/setTime.js'></script>
+    <script>
+
+        $(document).on('click', '#send_code_button', function () {
+            var email = $('#username_email').val()
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+            if (email == '') {
+                $('.tip').hide()
+                $('#tip_of_email').html('Please type in email')
+                $('#tip_of_email').show()
+            } else if (!reg.test(email)) {
+                $('.tip').hide()
+                $('#tip_of_email').html('invalid email')
+                $('#tip_of_email').show()
+            }
+            else {
+                var flag = true
+
+                $.ajax(
+                    {
+                        type: 'get',
+                        url: '/getVerifivationCode',
+                        data: { 'email': email },
+                        dataType: 'json',
+                        xhrFields: { withCredentials: true },
+                        crossDomaina: true,
+                        success: function (result) {
+                            if (result.code == '200') {
+                                alert('Verification Code successfully sent!')
+                            }
+                            else {
+                                alert('Undentified failure : 301')
+                            }
+                        }
+                    }
+                )
+                setTime(this, 3)
+            }
+        }
+        )
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                var email = $('#username_email').val()
+                var password = $('#password').val()
+                var password_conform = $('#password_conform').val()
+                var velidation_code = $('#verification_code').val()
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+                $('.tip').hide()
+                if (email == '') {
+
+                    $('#tip_of_email').html('Please type in email')
+                    $('#tip_of_email').show()
+
+                } else if (!reg.test(email)) {
+
+                    $('#tip_of_email').html('invalid email')
+                    $('#tip_of_email').show()
+                } else if (velidation_code == '') {
+                    $('#tip_of_verification').html('code should be entered')
+                    $('#tip_of_verification').show()
+                } else if (password == '') {
+                    $('#tip_of_password').html('password should not be empty')
+                    $('#tip_of_password').show()
+                }
+                else if (!(password == password_conform)) {
+                    $('#tip_of_password_conform').show()
+                } else {
+                    $.ajax({
+                        method: 'post',
+                        url: '/SignUp',
+                        data: { 'email': email, 'password': password, 'varification_code': velidation_code },
+                        dataType: 'json',
+                        xhrFields: { withCredentials: true },
+                        crossDomaina: true,
+                        success: function (result) {
+                            $('.tip').hide()
+                            if (result.code == '200') {
+                                alert('successfully signed up!')
+                                window.location.href = result.url
+                            }
+                            else if (result.code == '201') {
+
+                                $('#tip_of_verification').html('code expired')
+                                $('#tip_of_verification').show()
+                            } else if (result.code == '203') {
+
+                                $('#tip_of_email').html('account already exists')
+                                $('#tip_of_email').show()
+                            } else if (result.code == '400') {
+
+                                $('#tip_of_verification').html('wrong codes')
+                                $('#tip_of_verification').show()
+                            }else if(result.code == '301'){
+                                alert('unexpected err')
+                            }
+                            else {
+                                $('#tip_of_verification').html('verification code does not exist')
+                                $('#tip_of_verification').show()
+                                // $('#tip_of_email').html('invalid email')
+
+                            }
+
+                        }
+
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

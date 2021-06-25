@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-signin-client_id"
+        content="184609219583-voi158k0cb3n391juuni3v40uh7tghik.apps.googleusercontent.com">
+    <title>Log in to Insight.AI</title>
+    <link rel="stylesheet" type="text/css" href="./css/style_of_signIn.css">
+</head>
+
+<body>
+    <div class="dowebok">
+        <div class="logo"></div>
+        <div class="form-item">
+            <input id="username_email" type="text" autocomplete="off" placeholder="email">
+            <p class="tip" id='tip_of_email'>Please type in valid email</p>
+        </div>
+        <div class="form-item">
+            <input id="password" type="password" autocomplete="off" placeholder="password">
+            <p class="tip" id='tip_of_password'>incorrect password or email</p>
+        </div>
+        <div class="form-item"><button id="submit">submit</button></div>
+        <div class="form-item" id="my-signin2"></div>
+        <div class="reg-bar">
+            <a class="reg" href="/sign_up" target="_blank">creat a account</a>
+            <a class="forget" href='#' target="_blank">forgot password?</a>
+        </div>
+        
+    </div>
+    <script src="./js/google_signIn_util.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <script src = './js/jquery-3.5.1.js'></script>
+    <script>
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                
+                var email = $('#username_email').val()
+                var password = $('#password').val()
+                var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+                if (email == '') {
+                    $('.tip').hide()
+                    $('#tip_of_email').html('Please type in email')
+                    $('#tip_of_email').show()
+                } else if (!reg.test(email)) {
+                    $('.tip').hide()
+                    $('#tip_of_email').html('invalid email')
+                    $('#tip_of_email').show()
+                } else if (password == '') {
+                    $('.tip').hide() 
+                    $('#tip_of_password').html("password can't be empty")
+                    $('#tip_of_password').show()
+                } else {
+                    
+                    $.ajax({
+                        method: 'post',
+                        url: '/SignIn',
+                        data: { 'name': email, 'password': password },
+                        dataType: 'json',
+                        success: function (result) {
+                            console.log(result)
+                            if (result.code == '200') {
+                                alert('successfully loged in')
+                                window.location.href = result.url
+                            }else if(result.code == '203'){
+                                alert("you've already signed in")
+                                window.location.href = result.url
+                            }
+                            else {
+                                $('.tip').hide()
+                                $('#tip_of_email').html('incorrecr email or password')
+                                $('#tip_of_password').show()
+                                $('#tip_of_email').show()
+                            }
+                        }
+                    })
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>
