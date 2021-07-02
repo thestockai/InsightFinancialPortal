@@ -1,12 +1,11 @@
-const Koa = require('koa')
+const koa = require('koa')
 const static = require('koa-static')
 const path = require('path')
 const router = require('./src/router_o/my_router')
 const controller = require('./src/control/controler')
 const cookieParser = require('cookie-parser')
 const session = require('koa-session')
-const port =  process.env.PORT || 8080;
-const app = new Koa()
+const app = new koa()
 
 // app.use(cookieParser())
 
@@ -27,4 +26,6 @@ app.use(router.allowedMethods({}))
 app.use(controller.routes())
 app.use(controller.allowedMethods())
 
-app.listen(port,()=> console.log(`application listening on http://localhost:${port}`))
+app.listen(80,()=>{
+    console.log('application started on port: 80')
+})

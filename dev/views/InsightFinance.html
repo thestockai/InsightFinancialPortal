@@ -19,6 +19,193 @@
 
   <script src='./js/plotly-latest.min.js'></script>
   <script src="./js/jquery-3.5.1.js" ></script>
+
+  <script>
+    var submitted = false;
+    var currentTicker = "AAPL";
+    var tickerJson;
+    var articleNumber = 0;
+    //0
+    function changeArticle(title, url, image_url) {
+      $("#article-title").html(title);
+      $("#article-url").attr("href", url);
+      $("#article-img").attr("src", image_url);
+    }
+    function getArticle(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[0]);
+          var title = data.data[0].title;
+          var url = data.data[0].news_url;
+          var image_url = data.data[0].image_url;
+          changeArticle(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+    
+    //1
+    function changeArticle1(title, url, image_url) {
+      $("#article-title1").html(title);
+      $("#article-url1").attr("href", url);
+      $("#article-img1").attr("src", image_url);
+    }
+    function getArticle1(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[1]);
+          var title = data.data[1].title;
+          var url = data.data[1].news_url;
+          var image_url = data.data[1].image_url;
+          changeArticle1(title, url, image_url);
+        }
+      });
+    }
+
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker1(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title1").html(currentTicker);
+      $("title1").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    //2
+    function changeArticle2(title, url, image_url) {
+      $("#article-title2").html(title);
+      $("#article-url2").attr("href", url);
+      $("#article-img2").attr("src", image_url);
+    }
+    function getArticle2(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[2]);
+          var title = data.data[2].title;
+          var url = data.data[2].news_url;
+          var image_url = data.data[2].image_url;
+          changeArticle2(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker2(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    //3
+    function changeArticle3(title, url, image_url) {
+      $("#article-title3").html(title);
+      $("#article-url3").attr("href", url);
+      $("#article-img3").attr("src", image_url);
+    }
+    function getArticle3(ticker) {
+      var tempData;
+      $.ajax({
+        url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
+          $(".result").html(data);
+          console.log("Getting article");
+          console.log(data);
+          console.log(data.data[3]);
+          var title = data.data[3].title;
+          var url = data.data[3].news_url;
+          var image_url = data.data[3].image_url;
+          changeArticle3(title, url, image_url);
+        }
+      });
+    }
+    // function changeArticle(newArticle) {
+    //   articleNumber = newArticle;
+    //   $("#article_number").html(articleNumber);
+    // }
+
+    function changeTicker3(newTicker) {
+      currentTicker = newTicker;
+      $("#tradingview_e1de3").attr("href", "https://www.tradingview.com/symbols/NASDAQ-" + currentTicker + "/"); //TODO
+      $("#ticker-title").html(currentTicker);
+      $("title").html("IvyOnline Graph Test | " + currentTicker);
+
+      // var title = data[0].title;
+      // var URL = data[0].news_url;
+      // console.log(title + " " + url);
+    }
+
+    $(document).ready(function () {
+      $("#submit").click(function () {
+        changeTicker($("#ticker").val());
+        getArticle($("#ticker").val());
+        changeTicker1($("#ticker").val());
+        getArticle1($("#ticker").val());
+        changeTicker2($("#ticker").val());
+        getArticle2($("#ticker").val());
+        changeTicker3($("#ticker").val());
+        getArticle3($("#ticker").val());
+        // changeArticle($("#article_number".val()));
+      });
+      var startingTicker = window.location.search.substring(1);
+      // var article_num = $("#article_number".val());
+      if (startingTicker.length > 4 || startingTicker.length < 1) {
+        startingTicker = "AAPL";
+      }
+
+      changeTicker(startingTicker);
+      // changeArticle(article_num);
+      getArticle(startingTicker);
+      changeTicker1(startingTicker);
+      getArticle1(startingTicker);
+      changeTicker2(startingTicker);
+      getArticle2(startingTicker);
+      changeTicker3(startingTicker);
+      getArticle3(startingTicker);
+    });
+
+    
+
+  </script>
 </head>
 
 
@@ -26,7 +213,7 @@
   <!-- NavBar -->
   <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand mb-0 h1 text-success" href="/">IN$GHT.AI</a>
+      <a class="navbar-brand mb-0 h1 text-success" href="#">IN$GHT.AI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,15 +233,16 @@
             <a class="nav-link" aria-current="page" href='infoStock'>Stock Info</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href='infoStock'>Stock Analysis</a>
+            <a class="nav-link" aria-current="page" href='analysis'>Stock Analysis</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href='feature'>Stock Feature</a>
+            <a class="nav-link" aria-current="page" href='feature'>Stock Features</a>
           </li>
 
 
         </ul>
         <!-- Button trigger modal -->
+        <button>EN/中</button>
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
         <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
 
@@ -75,171 +263,164 @@
 
   </section>
 
-<!-- TradingView Widget BEGIN -->
-<div id="info-container" class="container">
-<div class = "flex-container main-page">
-<div class = "flexbox">
-<h3>Market Information</h3>
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-  {
-  "colorTheme": "light",
-  "dateRange": "12M",
-  "showChart": false,
-  "locale": "en",
-  "largeChartUrl": "thestocks.ai",
-  "isTransparent": true,
-  "showSymbolLogo": true,
-  "width": "400",
-  "height": "465",
-  "tabs": [
-    {
-      "title": "Indices",
-      "symbols": [
-        {
-          "s": "FOREXCOM:SPXUSD",
-          "d": "S&P 500"
-        },
-        {
-          "s": "FOREXCOM:NSXUSD",
-          "d": "Nasdaq 100"
-        },
-        {
-          "s": "FOREXCOM:DJI",
-          "d": "Dow 30"
-        },
-        {
-          "s": "INDEX:NKY",
-          "d": "Nikkei 225"
-        },
-        {
-          "s": "INDEX:DEU30",
-          "d": "DAX Index"
-        },
-        {
-          "s": "FOREXCOM:UKXGBP",
-          "d": "UK 100"
-        }
-      ],
-      "originalTitle": "Indices"
-    },
-    {
-      "title": "Commodities",
-      "symbols": [
-        {
-          "s": "CME_MINI:ES1!",
-          "d": "S&P 500"
-        },
-        {
-          "s": "CME:6E1!",
-          "d": "Euro"
-        },
-        {
-          "s": "COMEX:GC1!",
-          "d": "Gold"
-        },
-        {
-          "s": "NYMEX:CL1!",
-          "d": "Crude Oil"
-        },
-        {
-          "s": "NYMEX:NG1!",
-          "d": "Natural Gas"
-        },
-        {
-          "s": "CBOT:ZC1!",
-          "d": "Corn"
-        }
-      ],
-      "originalTitle": "Commodities"
-    },
-    {
-      "title": "Bonds",
-      "symbols": [
-        {
-          "s": "CME:GE1!",
-          "d": "Eurodollar"
-        },
-        {
-          "s": "CBOT:ZB1!",
-          "d": "T-Bond"
-        },
-        {
-          "s": "CBOT:UB1!",
-          "d": "Ultra T-Bond"
-        },
-        {
-          "s": "EUREX:FGBL1!",
-          "d": "Euro Bund"
-        },
-        {
-          "s": "EUREX:FBTP1!",
-          "d": "Euro BTP"
-        },
-        {
-          "s": "EUREX:FGBM1!",
-          "d": "Euro BOBL"
-        }
-      ],
-      "originalTitle": "Bonds"
-    },
-    {
-      "title": "Forex",
-      "symbols": [
-        {
-          "s": "FX:EURUSD"
-        },
-        {
-          "s": "FX:GBPUSD"
-        },
-        {
-          "s": "FX:USDJPY"
-        },
-        {
-          "s": "FX:USDCHF"
-        },
-        {
-          "s": "FX:AUDUSD"
-        },
-        {
-          "s": "FX:USDCAD"
-        }
-      ],
-      "originalTitle": "Forex"
-    }
-  ]
-}
-  </script>
-</div>
 
-<!-- TradingView Widget END -->
-  
-</div>
-
-<div class = "flexbox">
-<h3>Economic Calendar</h3>
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-  {
-  "colorTheme": "light",
-  "isTransparent": true,
-  "width": "400",
-  "height": "465",
-  "locale": "en",
-  "importanceFilter": "-1,0,1"
+  <!-- TradingView Widget BEGIN -->
+  <div class = flex-container>
+  <!-- TradingView Widget BEGIN -->
+  <div class = flexbox>
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+    {
+    "width": 510,
+    "height": 450,
+    "symbolsGroups": [
+      {
+        "name": "Indices",
+        "originalName": "Indices",
+        "symbols": [
+          {
+            "name": "FOREXCOM:SPXUSD",
+            "displayName": "S&P 500"
+          },
+          {
+            "name": "FOREXCOM:NSXUSD",
+            "displayName": "Nasdaq 100"
+          },
+          {
+            "name": "FOREXCOM:DJI",
+            "displayName": "Dow 30"
+          },
+          {
+            "name": "INDEX:NKY",
+            "displayName": "Nikkei 225"
+          },
+          {
+            "name": "INDEX:DEU30",
+            "displayName": "DAX Index"
+          },
+          {
+            "name": "FOREXCOM:UKXGBP",
+            "displayName": "UK 100"
+          }
+        ]
+      },
+      {
+        "name": "Commodities",
+        "originalName": "Commodities",
+        "symbols": [
+          {
+            "name": "CME_MINI:ES1!",
+            "displayName": "S&P 500"
+          },
+          {
+            "name": "CME:6E1!",
+            "displayName": "Euro"
+          },
+          {
+            "name": "COMEX:GC1!",
+            "displayName": "Gold"
+          },
+          {
+            "name": "NYMEX:CL1!",
+            "displayName": "Crude Oil"
+          },
+          {
+            "name": "NYMEX:NG1!",
+            "displayName": "Natural Gas"
+          },
+          {
+            "name": "CBOT:ZC1!",
+            "displayName": "Corn"
+          }
+        ]
+      },
+      {
+        "name": "Bonds",
+        "originalName": "Bonds",
+        "symbols": [
+          {
+            "name": "CME:GE1!",
+            "displayName": "Eurodollar"
+          },
+          {
+            "name": "CBOT:ZB1!",
+            "displayName": "T-Bond"
+          },
+          {
+            "name": "CBOT:UB1!",
+            "displayName": "Ultra T-Bond"
+          },
+          {
+            "name": "EUREX:FGBL1!",
+            "displayName": "Euro Bund"
+          },
+          {
+            "name": "EUREX:FBTP1!",
+            "displayName": "Euro BTP"
+          },
+          {
+            "name": "EUREX:FGBM1!",
+            "displayName": "Euro BOBL"
+          }
+        ]
+      },
+      {
+        "name": "Forex",
+        "originalName": "Forex",
+        "symbols": [
+          {
+            "name": "FX:EURUSD"
+          },
+          {
+            "name": "FX:GBPUSD"
+          },
+          {
+            "name": "FX:USDJPY"
+          },
+          {
+            "name": "FX:USDCHF"
+          },
+          {
+            "name": "FX:AUDUSD"
+          },
+          {
+            "name": "FX:USDCAD"
+          }
+        ]
+      }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "light",
+    "isTransparent": true,
+    "locale": "en"
   }
-  </script>
-</div>
-<!-- TradingView Widget END -->
-</div>
-</div>
-</div>
+    </script>
+  </div>
+  </div>
+  <!-- TradingView Widget END -->
+  <div class = flexbox>
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+      {
+      "colorTheme": "light",
+      "isTransparent": true,
+      "width": "510",
+      "height": "450",
+      "locale": "en",
+      "importanceFilter": "-1,0,1"
+    }
+      </script>
+    </div>
+  </div>
+  </div>
+  
+  <!-- TradingView Widget END -->
+
+
 
 </body>
-
 </html>

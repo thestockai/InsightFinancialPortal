@@ -6,10 +6,10 @@ function plot_candleStick(company){
         theme: "light2", // "light1", "light2", "dark1", "dark2"
         exportEnabled: true,
         title: {
-            text: "Prediction for "+company
+            text: "Prediction for " + company
         },
         subtitles: [{
-            text: "the feture 20 days"
+            text: "the future 20 days"
         }],
         axisX: {
             interval: 0,

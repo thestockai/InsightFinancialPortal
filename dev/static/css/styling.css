@@ -100,25 +100,16 @@ svg {
     margin-top: 40px;
 }
 
-
 .flex-container {
     display: flex;
-  }
+    margin-left: 50px;
+}
   
 .flexbox {
     flex: 1;
-  }
-  
-.flexbox1 {
-    flex: 1;
-    text-align: center;
 }
 
-.main-page {
-    position: relative;
-    top: 20px;
-}
 /* tablet/phone view */
 @media (max-width: 950px) {
     
-}
+  }
