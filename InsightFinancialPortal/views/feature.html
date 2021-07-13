@@ -80,9 +80,11 @@
       Features
     </h2>
   </div>
-  <div class = flex-container>
+  <section class = phone>
+  <div class = "flex-container desktop">
   <div class = flexbox>
   <!-- TradingView Widget BEGIN -->
+  
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
     <div class="tradingview-widget-copyright"></div>
@@ -122,6 +124,53 @@
   <!-- TradingView Widget END -->
   </div>
   </div>
+  </section>
+
+  <section class = desktop>
+
+  <div class = "flex-container">
+    <div class = flexbox>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+      {
+      "symbol": "NASDAQ:AAPL",
+      "colorTheme": "light",
+      "isTransparent": true,
+      "largeChartUrl": "",
+      "displayMode": "regular",
+      "width": 480,
+      "height": 900,
+      "locale": "en",
+      "largeChartUrl": "None"
+      }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+    </div>  
+    <div class = flexbox>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js" async>
+      {
+      "symbol": "NASDAQ:AAPL",
+      "width": 480,
+      "height": 900,
+      "colorTheme": "light",
+      "isTransparent": true,
+      "locale": "en",
+      "largeChartUrl": "None"
+      }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+    </div>
+    </div>
+  </section>
 </body>
 
 </html>

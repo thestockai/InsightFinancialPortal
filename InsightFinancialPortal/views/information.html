@@ -25,6 +25,13 @@
     var currentTicker = "AAPL";
     var tickerJson;
     var articleNumber = 0;
+    var width = window.innerWidth;
+    var widgetWidth;
+    if(width > 650) {
+      widgetWidth = 980;
+    } else {
+      widgetWidth = 500;
+    }
     //0
     function changeArticle(title, url, image_url) {
       $("#article-title").html(title);
@@ -353,8 +360,8 @@
     <script type="text/javascript">
       new TradingView.widget(
       {
-          "width": 980,
-          "height": 610,
+          "width":widgetWidth,
+          "height":610,
           "symbol": currentTicker,
           "interval": "D",
           "timezone": "Etc/UTC",
@@ -372,7 +379,7 @@
       $("#submit").click(function () {
         new TradingView.widget(
         {
-          "width": 980,
+          "width": widgetWidth,
           "height": 610,
           "symbol": currentTicker,
           "interval": "D",

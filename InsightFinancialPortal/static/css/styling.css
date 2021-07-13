@@ -109,7 +109,29 @@ svg {
     flex: 1;
 }
 
+.power {
+    text-align: center;
+}
+
+.desktop {
+    display: inline;
+}
+
+.phone {
+    display: none;
+}
+
+.desktop1{
+    display:none;
+}
+
 /* tablet/phone view */
-@media (max-width: 950px) {
+@media (max-width: 650px) {
+    .desktop {
+        display: none;
+    }
     
-  }
+    .phone {
+        display: inline;
+    }
+}

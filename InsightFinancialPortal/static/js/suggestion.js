@@ -32,18 +32,59 @@ function suggestion(company){
             parseInt(pointEnd[1].split("-")[2])
         );
 
-        /* TODO find firstPeak >= 4;
+        /* fully functional, for users that pursue a higher return rate with the cost of a higher risk.
+
         var openPrices = [];
+        var openDates = [];
+        var dates = startDate;
         for (var i = 1; i < csvLines.length; i++) {
             if (csvLines[i].length > 0) {
                 points = csvLines[i].split(",");
                 openPrices.push(parseFloat(points[2]));
+                dates = new Date(
+                    parseInt(points[1].split("-")[0]),
+                    parseInt(points[1].split("-")[1]-1),
+                    parseInt(points[1].split("-")[2])
+                );
+                openDates.push(dates);
             }
         }
-        console.log(openPrices[0]);
-        var day = 0;
-        for (var i = 0; i < openPrices.length; i++) {
-            day = 2;
+        var beginningDate = startDate;
+        var endingDate = startDate;
+        var count = 1;
+        var startingValue;
+        var endingValue;
+        for (var i = 1; i < openPrices.length; i++) {
+            if(count == 1) {
+                beginningDate = openDates[i];
+                startingValue = openPrices[i];
+            }
+            if(openPrices[i] > openPrices[i - 1]) {
+                count += 1;
+            }
+            if(openPrices[i] < openPrices[i - 1]) {
+                count = 1;
+                continue;
+            }
+            if(count > 3 && i < (openPrices.length - 1)) {
+                if(openPrices[i + 1] >= openPrices[i]) {
+                    count += 1
+                    continue;
+                } else if (openPrices[i + 1] < openPrices[i] || i == openPrices.length - 2) {
+                    endingDate = openDates[i];
+                    endingValue = openPrices[i];
+                    console.log(endingDate);
+                    console.log(beginningDate);
+                    var endingDateStr = endingDate.toString();
+                    var beginningDateStr = beginningDate.toString();
+                    endingDateStr = endingDateStr.slice(0, 15);
+                    beginningDateStr = beginningDateStr.slice(0, 15);
+                    document.getElementById("buyDate").innerHTML =("Suggested Buy Date: " + beginningDateStr);
+                    document.getElementById("sellDate").innerHTML =("Suggested Sell Date: " + endingDateStr);
+                    document.getElementById("expectedReturn").innerHTML =("Expected Return: " + ((endingValue - startingValue)/startingValue * 100).toFixed(2) + "%");
+                    return;
+                }
+            }
         }
         */
 
@@ -80,13 +121,14 @@ function suggestion(company){
                 }
             }
         }
+
         var diff = (currentMax-currentMin)/currentMin;
         var accuracy = false;
         if((minDate - startDate) /(1000 * 3600 * 24) <= 7) {
             accuracy = true;
         }
         if (diff < 0.03) {
-            document.getElementById("sellDate").innerHTML =("We suggest holding the stock/wait and see");
+            document.getElementById("buyDate").innerHTML =("We suggest holding the stock/wait and see");
             return;
         }
         if(endValue < startValue) {
@@ -98,22 +140,22 @@ function suggestion(company){
             var maxDateStr = maxDate.toString();
             minDateStr = minDateStr.slice(0, 15);
             maxDateStr = maxDateStr.slice(0, 15);
-            document.getElementById("sellDate").innerHTML =("Suggested Buy Date: " + minDateStr);
+            document.getElementById("buyDate").innerHTML =("Suggested Buy Date: " + minDateStr);
             if(endDate.getTime() != maxDate.getTime()) {
-                document.getElementById("buyDate").innerHTML =("Suggested Sell Date: " + maxDateStr);
+                document.getElementById("sellDate").innerHTML =("Suggested Sell Date: " + maxDateStr);
                 document.getElementById("expectedReturn").innerHTML =("Expected Return: " + ((currentMax - currentMin)/currentMin * 100).toFixed(2) + "%");
             } else {
-                document.getElementById("buyDate").innerHTML =("Hold till end");
+                document.getElementById("sellDate").innerHTML =("Hold till end");
                 document.getElementById("expectedReturn").innerHTML =("Expected Return: " + ((endValue - currentMin)/currentMin * 100).toFixed(2) + "%");
             }
             return;
         }
         if (Math.abs((endValue-startValue)/startValue) < 0.02) {
-            document.getElementById("sellDate").innerHTML =("We suggest holding the stock/wait and see");
+            document.getElementById("buyDate").innerHTML =("We suggest holding the stock/wait and see");
             return;
         }
-        document.getElementById("sellDate").innerHTML =("");
         document.getElementById("buyDate").innerHTML =("");
+        document.getElementById("sellDate").innerHTML =("");
         
     } 
 }
