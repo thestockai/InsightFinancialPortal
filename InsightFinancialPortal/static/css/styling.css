@@ -125,6 +125,17 @@ svg {
     display:none;
 }
 
+.footer {
+    height: 100px;
+    background-color: #f8f9fa;
+    color: #198754;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
 /* tablet/phone view */
 @media (max-width: 650px) {
     .desktop {

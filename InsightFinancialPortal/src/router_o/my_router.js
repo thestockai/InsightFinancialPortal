@@ -7,6 +7,10 @@ router.get('/', async (ctx) => {
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./views/InsightFinance.html')
 })
+router.get('/zh', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/InsightFinance-zh.html')
+})
 router.get('/sign_in', async (ctx) => {
         ctx.response.type = 'html'
         ctx.response.body = fs.createReadStream('./views/sign_In2.html')
@@ -26,9 +30,19 @@ router.get('/AboutUs', async (ctx) => {
     ctx.response.body = fs.createReadStream('./views/about.html')
     // /sign_in_with_google_account.html')
 })
+router.get('/AboutUs-zh', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/about-zh.html')
+    // /sign_in_with_google_account.html')
+})
 router.get('/infoStock', async (ctx) => {
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./views/information.html')
+    // /sign_in_with_google_account.html')
+})
+router.get('/infoStock-zh', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/information-zh.html')
     // /sign_in_with_google_account.html')
 })
 router.get('/analysis', async (ctx) => {
@@ -36,9 +50,24 @@ router.get('/analysis', async (ctx) => {
     ctx.response.body = fs.createReadStream('./views/analysis.html')
     // /sign_in_with_google_account.html')
 })
+router.get('/analysis-zh', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/analysis-zh.html')
+    // /sign_in_with_google_account.html')
+})
 router.get('/feature', async (ctx) => {
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./views/feature.html')
+    // /sign_in_with_google_account.html')
+})
+router.get('/feature-zh', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/feature-zh.html')
+    // /sign_in_with_google_account.html')
+})
+router.get('/blog-zh', async (ctx) => {
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./views/blog-zh.html')
     // /sign_in_with_google_account.html')
 })
 router.get('/blog', async (ctx) => {
