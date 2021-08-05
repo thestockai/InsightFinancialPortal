@@ -25,7 +25,7 @@ function suggestion(company){
         }
         num -=1;
         var pointEnd = csvLines[num].split(",");
-        var endValue = parseFloat(pointEnd[3]);
+        var endValue = parseFloat(pointEnd[5]);
         var endDate = new Date(
             parseInt(pointEnd[1].split("-")[0]),
             parseInt(pointEnd[1].split("-")[1]-1),
@@ -131,10 +131,7 @@ function suggestion(company){
             document.getElementById("buyDate").innerHTML =("We suggest holding the stock/wait and see");
             return;
         }
-        if(endValue < startValue) {
-            document.getElementById("sellDate").innerHTML =("We suggest selling the stock if you have any possession");
-            return;
-        }
+        
         if(maxDate > minDate && accuracy) {
             var minDateStr = minDate.toString();
             var maxDateStr = maxDate.toString();
@@ -150,11 +147,16 @@ function suggestion(company){
             }
             return;
         }
+
+        if(endValue < startValue) {
+            document.getElementById("sellDate").innerHTML =("We suggest selling the stock if you have any possession");
+            return;
+        }
         if (Math.abs((endValue-startValue)/startValue) < 0.02) {
             document.getElementById("buyDate").innerHTML =("We suggest holding the stock/wait and see");
             return;
         }
-        document.getElementById("buyDate").innerHTML =("");
+        document.getElementById("buyDate").innerHTML =("We suggest holding the stock/wait and see");
         document.getElementById("sellDate").innerHTML =("");
         
     } 

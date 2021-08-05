@@ -37,9 +37,7 @@
       $.ajax({
         url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
           $(".result").html(data);
-          console.log("Getting article");
-          console.log(data);
-          console.log(data.data[0]);
+        
           var title = data.data[0].title;
           var url = data.data[0].news_url;
           var image_url = data.data[0].image_url;
@@ -74,9 +72,6 @@
       $.ajax({
         url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
           $(".result").html(data);
-          console.log("Getting article");
-          console.log(data);
-          console.log(data.data[1]);
           var title = data.data[1].title;
           var url = data.data[1].news_url;
           var image_url = data.data[1].image_url;
@@ -112,9 +107,7 @@
       $.ajax({
         url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
           $(".result").html(data);
-          console.log("Getting article");
-          console.log(data);
-          console.log(data.data[2]);
+        
           var title = data.data[2].title;
           var url = data.data[2].news_url;
           var image_url = data.data[2].image_url;
@@ -149,9 +142,6 @@
       $.ajax({
         url: "https://stocknewsapi.com/api/v1?tickers=" + currentTicker + "&items=50&token=sowsjt2lk44mqjlqku4dtwxlutsms1rgnwlcuyoe", success: function (data) {
           $(".result").html(data);
-          console.log("Getting article");
-          console.log(data);
-          console.log(data.data[3]);
           var title = data.data[3].title;
           var url = data.data[3].news_url;
           var image_url = data.data[3].image_url;
@@ -214,8 +204,9 @@
   <!-- NavBar -->
   <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand mb-0 h1 text-success" href="zh">IN$GHT.AI</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand mb-0 h1 text-success" href="/zh">IN$GHT.AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -239,12 +230,11 @@
             <a class="nav-link" aria-current="page" href='feature-zh'>股票信息</a>
           </li>
 
-
         </ul>
         <!-- Button trigger modal -->
         <a class="nav-link" aria-current="page" href='/'>EN/中</a>
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>登陆</button>
-        <button class="btn btn-outline-success" type="submit" id='sign_up'>注册</button>
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
+        <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
 
       </div>
     </div>
@@ -426,7 +416,7 @@
       <div class="tradingview-widget-copyright"></div>
       <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
       {
-      "width": 510,
+      "width": 400,
       "height": 450,
       "symbolsGroups": [
         {
@@ -560,7 +550,7 @@
         {
         "colorTheme": "light",
         "isTransparent": true,
-        "width": "510",
+        "width": "400",
         "height": "450",
         "locale": "zh_CN",
         "importanceFilter": "-1,0,1"

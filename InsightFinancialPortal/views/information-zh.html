@@ -27,13 +27,23 @@
     var articleNumber = 0;
     var width = window.innerWidth;
     var widgetWidth;
-    if(width > 650) {
+    if(width > 980) {
       widgetWidth = 980;
     } else {
-      widgetWidth = 500;
+      widgetWidth = width;
     }
     //0
     function changeArticle(title, url, image_url) {
+      if(window.innerWidth < 650) {
+        if(title.length >= 20) {
+          title = title.slice(0, 20) + "...";
+        }
+      } else {
+        if(title.length >= 70) {
+          title = title.slice(0, 70) + "...";
+        }
+      }
+      
       $("#article-title").html(title);
       $("#article-url").attr("href", url);
       $("#article-img").attr("src", image_url);
@@ -71,6 +81,15 @@
     
     //1
     function changeArticle1(title, url, image_url) {
+      if(window.innerWidth < 650) {
+        if(title.length >= 20) {
+          title = title.slice(0, 20) + "...";
+        }
+      } else {
+        if(title.length >= 70) {
+          title = title.slice(0, 70) + "...";
+        }
+      }
       $("#article-title1").html(title);
       $("#article-url1").attr("href", url);
       $("#article-img1").attr("src", image_url);
@@ -109,6 +128,15 @@
 
     //2
     function changeArticle2(title, url, image_url) {
+      if(window.innerWidth < 650) {
+        if(title.length >= 20) {
+          title = title.slice(0, 20) + "...";
+        }
+      } else {
+        if(title.length >= 70) {
+          title = title.slice(0, 70) + "...";
+        }
+      }
       $("#article-title2").html(title);
       $("#article-url2").attr("href", url);
       $("#article-img2").attr("src", image_url);
@@ -146,6 +174,15 @@
 
     //3
     function changeArticle3(title, url, image_url) {
+      if(window.innerWidth < 650) {
+        if(title.length >= 20) {
+          title = title.slice(0, 20) + "...";
+        }
+      } else {
+        if(title.length >= 70) {
+          title = title.slice(0, 70) + "...";
+        }
+      }
       $("#article-title3").html(title);
       $("#article-url3").attr("href", url);
       $("#article-img3").attr("src", image_url);
@@ -220,8 +257,9 @@
   <!-- NavBar -->
   <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand mb-0 h1 text-success" href="zh">IN$GHT.AI</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand mb-0 h1 text-success" href="/zh">IN$GHT.AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -245,12 +283,11 @@
             <a class="nav-link" aria-current="page" href='feature-zh'>股票信息</a>
           </li>
 
-
         </ul>
         <!-- Button trigger modal -->
-        <a class="nav-link" aria-current="page" href='/infoStock'>EN/中</a>
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>登陆</button>
-        <button class="btn btn-outline-success" type="submit" id='sign_up'>注册</button>
+        <a class="nav-link" aria-current="page" href='infoStock'>EN/中</a>
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
+        <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
 
       </div>
     </div>

@@ -26,8 +26,9 @@
   <!-- NavBar -->
   <nav id="main-nav" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand mb-0 h1 text-success" href="zh">IN$GHT.AI</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand mb-0 h1 text-success" href="/zh">IN$GHT.AI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,12 +52,11 @@
             <a class="nav-link" aria-current="page" href='feature-zh'>股票信息</a>
           </li>
 
-
         </ul>
         <!-- Button trigger modal -->
-        <a class="nav-link" aria-current="page" href='/analysis'>EN/中</a>
-        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>登陆</button>
-        <button class="btn btn-outline-success" type="submit" id='sign_up'>注册</button>
+        <a class="nav-link" aria-current="page" href='analysis'>EN/中</a>
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id='sign_in'>Sign in</button>
+        <button class="btn btn-outline-success" type="submit" id='sign_up'>Sign up</button>
 
       </div>
     </div>
@@ -82,7 +82,6 @@
   <div id='selectionBar'>
     <label for="company_selected">公司：</label>
     <input type="text" id="company_selected" list = "company-list" >
-    <button id='prediction'>Search</button>
     <!--
       'APEI','AAL','AAPL','AMC','AMD','AMZN','AZN','BA','BAC','BB','BILI','BLCT','BABA','BB','BTBT','BNGO','BLNK'
 ,'BAC','CBAT','CCL','CLF','CRM','CLPR','DIS','DBX','DGLY','F','FB','GE','GM','GOOG','KO',
@@ -168,23 +167,97 @@
         <option>WOOF</option>
         <option>X</option>
         <option>XPEV</option>
+        <option>SPY</option>
+        <option>XLF</option>
+        <option>EEM</option>
+        <option>XLE</option>
+        <option>EWZ</option>
+        <option>IWM</option>
+        <option>VXX</option>
+        <option>SLV</option>
+        <option>EFA</option>
+        <option>GDX</option>
+        <option>HYG</option>
+        <option>SDS</option>
+        <option>FXI</option>
+        <option>TQQQ</option>
+        <option>SQQQ</optio>
+        <option>UDOW</option>
+        <option>SDOW</option>
+        <option>QQQ</option>
+        <option>UPRO</option>
+        <option>SPXL</option>
+        <option>EDU</option>
+        <option>TAL</option>
     </datalist>
-  </div>
-  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <div>
+      可接受的风险：
+    <input type="radio" id="lr" name="risk" value="Low Risk"
+          checked>
+    <label for="lr">低风险</label>
+    
+    <input type="radio" id="hr" name="risk" value="High Risk">
+    <label for="hr">高风险</label>
+    <button id='prediction'>搜索</button>
+    <div class = "massage">
+      <p>*different trading suggestions will be given based on selected preference for risk</p>
+    </div>
+    <div class = "massage">
+      <p> Choosing high risk gives trading suggestions with higher profit with a higher risk of portofolio loss,</p>
+    </div>
+    <div class = "massage">
+      <p> while choosing low risk gives trading suggestions with lower profit and a lower risk of portofolio loss</p>
+    </div>
+    <style>
+      .massage {
+        font-size: small;
+      }
+    </style>
+    </div>
+</div>
+<div id='helpValidate' class = "hidden alert">
+  <p>请输入列表里已有的股票代码</p>
+</div>
+<script src="./js/validateStocks.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#prediction").click(function () {
+        document.getElementById("sellDate").innerHTML =("");
+        document.getElementById("buyDate").innerHTML =("");
+        document.getElementById("expectedReturn").innerHTML =("");
+        var correction = validate($("#company_selected").val());
+        if(correction) {
+          $("#helpValidate").addClass("hidden");
+        } else {
+          $("#helpValidate").removeClass("hidden");
+        }
+      });
+    });
+    
+</script>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="./js/canvasjs.min.js"></script>
 <script src="./js/plot_candleStick.js"></script>
 <script>
   plot_candleStick('AAPL')
 </script>
-<script src="./js/suggestion.js"></script>
+<script src="./js/suggestion-zh.js"></script>
+<script src="./js/suggestionAggresive-zh.js"></script>
+
 <script>
   suggestion('AAPL');
   $(document).ready(function () {
       $("#prediction").click(function () {
-        suggestion($("#company_selected").val());
+        var risk = $('input[name="risk"]:checked').val();
+        if (risk == "Low Risk") {
+          suggestion($("#company_selected").val());
+        } else {
+          suggestionAgg($("#company_selected").val());
+        }
+        
       });
     });
-  
 </script>
 <p id = "buyDate"></p>
 <p id = "sellDate"></p>
@@ -306,6 +379,12 @@
         })
       })
 </script>
+
+<div class="footer">
+  <hr>
+  <p>Copyright © 2020 Ivy Online Academy - All Rights Reserved.</p>
+</div>
+  
 </body>
 
 </html>

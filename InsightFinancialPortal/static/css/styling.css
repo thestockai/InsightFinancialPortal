@@ -136,6 +136,14 @@ svg {
     text-align: center;
 }
 
+.hidden {
+    display:none;
+}
+
+.alert {
+    color:red
+}
+
 /* tablet/phone view */
 @media (max-width: 650px) {
     .desktop {
