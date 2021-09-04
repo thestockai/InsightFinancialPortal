@@ -214,14 +214,14 @@
   <p>Please enter a ticker in the list</p>
 </div>
 <script src="./js/validateStocks.js"></script>
+<script src="./js/loss.js"></script>
   <script>
     $(document).ready(function () {
       $("#prediction").click(function () {
-        
-        
         document.getElementById("sellDate").innerHTML =("");
         document.getElementById("buyDate").innerHTML =("");
         document.getElementById("expectedReturn").innerHTML =("");
+        document.getElementById("loss").innerHTML =("");
         var correction = validate($("#company_selected").val());
         if(correction) {
           $("#helpValidate").addClass("hidden");
@@ -244,15 +244,17 @@
 
 <script>
   suggestion('AAPL');
+  loss('AAPL');
   $(document).ready(function () {
       $("#prediction").click(function () {
         var risk = $('input[name="risk"]:checked').val();
         if (risk == "Low Risk") {
           suggestion($("#company_selected").val());
+          loss($("#company_selected").val());
         } else {
           suggestionAgg($("#company_selected").val());
+          loss($("#company_selected").val());
         }
-        
       });
     });
   
@@ -260,6 +262,11 @@
 <p id = "buyDate"></p>
 <p id = "sellDate"></p>
 <p id = "expectedReturn"></p>
+<p id = "loss"></p>
+<p>The absolute value of expected shortfall at 5% level is used to calculate the loss ratio. 
+  Expected shortfall is a coherent risk measure. 
+  The ‘expected shortfall at 5% level’ is the expected return on the portfolio in the worst 5% of cases. 
+  It is defined to be the mean loss of portfolio value given that a loss is occurring at or below 5% level.</p>
   <!-- News label-->
   <div id="news-container" class="container">
     <p id="ticker-title-label">prediction analysis</p>
@@ -270,9 +277,11 @@
   <div id="plot_dynamic" style="height: 300px; width: 100%;"></div>
   <script src="./js/plot_analysis.js"></script>
   <script src="./js/My_plot.js"></script>
+  <script src="./js/loss.js"></script>
   <script>
     plot_candleStick_ana('AAPL')
     plot_stuff('AAPL')
+    loss('AAPL')
   </script>
 
   <!-- Finanical label -->

@@ -6,27 +6,35 @@ function plot_candleStick_ana(company){
         animationEnabled: true,
         theme: "light1", // "light1", "light2", "dark1", "dark2"
         exportEnabled: true,
+        zoomEnabled: true,
         title: {
-            text: "Predicted & actual value for "+company
+            text: "Predicted & actual value for " + company,
+            fontFamily: "times new roman",
+            fontWeight: "bolder"
         },
         subtitles: [{
-            text: "the past 7 days"
+            text: "the past 7 days",
+            fontFamily: "times new roman"
         }],
         axisX: {
             interval: 0,
-            valueFormatString: "MM-DD"
+            valueFormatString: "MM-DD",
+            fontFamily: "times new roman"
         },
         axisY: {
             prefix: "$",
-            title: "Price"
+            title: "Price",
+            fontFamily: "times new roman"
         },
         legend: {
             verticalAlign: "top",
             horizontalAlign: "right",
-            dockInsidePlotArea: true
+            dockInsidePlotArea: true,
+            fontFamily: "times new roman"
         },
         toolTip: {
-            content: "Date: {x}<br /><strong>Price:</strong><br />Open: {y[0]}, Close: {y[3]}<br />High: {y[1]}, Low: {y[2]}"
+            shared: true,
+            fontFamily: "times new roman"
         },
         data: [{
             name:"predicted",
@@ -34,14 +42,14 @@ function plot_candleStick_ana(company){
             showInLegend: true,
             legendMarkerType: "square",
             yValueFormatString: "$##0.00",
-            color: "rgba(255,0,0,0.5)",
+            color: "#8A8AFF",
             dataPoints: dataPoints1
         },{
             name:"actual",
             type: "candlestick",
             showInLegend: true,
             legendMarkerType: "square",
-            color: "rgba(0,0,255,0.3)",
+            color: "#FFC55C",
             yValueFormatString: "$##0.00",
             dataPoints: dataPoints2
         }

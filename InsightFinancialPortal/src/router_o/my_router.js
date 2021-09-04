@@ -3,10 +3,6 @@ const fs = require('fs')
 
 const path = require('path')
 const router = new Router()
-router.get('/testing', async (ctx) => {
-    ctx.response.type = 'html'
-    ctx.response.body = fs.createReadStream('./views/testing.html')
-})
 router.get('/', async (ctx) => {
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./views/InsightFinance.html')

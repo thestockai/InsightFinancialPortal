@@ -29,7 +29,8 @@ function plot_stuff1(company) {
         },
         
         toolTip: {
-            shared: true
+            shared: true,
+            fontFamily: "times new roman"
         },
         data: [{
             name: "Open",
@@ -109,6 +110,7 @@ function plot_stuff1(company) {
         chart.render();
     }
 }
+
 function plot_stuff(company) {
     var dataPoints1 = [];
     var Open = [];
@@ -123,26 +125,33 @@ function plot_stuff(company) {
         theme: "light1", // "light1", "light2", "dark1", "dark2"
         exportEnabled: true,
         title: {
-            text: "prediction for "+company 
+            text: "Prediction for " + company,
+            fontFamily: "times new roman",
+            fontWeight: "bolder"
         },
         subtitles: [{
-            text: "starting from different days for yesterday( " + yesterday_date + " )"
+            text: "starting from different days for yesterday( " + yesterday_date + " )",
+            fontFamily: "times new roman"
         }],
         axisX: {
             interval: 0,
-            valueFormatString: "MM-DD"
+            valueFormatString: "MM-DD",
+            fontFamily: "times new roman"
         },
         axisY: {
             prefix: "$",
-            title: "Price"
+            title: "Price",
+            fontFamily: "times new roman"
         },
         legend: {
             verticalAlign: "top",
             horizontalAlign: "right",
-            dockInsidePlotArea: true
+            dockInsidePlotArea: true,
+            fontFamily: "times new roman"
         },
         toolTip: {
-            content: "Date: {x}<br /><strong>Price:</strong><br />Open: {y[0]}, Close: {y[3]}<br />High: {y[1]}, Low: {y[2]}"
+            shared: true,
+            fontFamily: "times new roman"
         },
         data: [{
             name:"predicted",
@@ -217,6 +226,7 @@ function plot_stuff(company) {
         // chart1.render();
         
     }
+    
     function getDataPointsFromCSV2(csv) {
         var today = new Date(Date.now());
         var csvLines = points = [];
@@ -269,9 +279,7 @@ function plot_stuff(company) {
                 });
             }
         }
-        chart1.render();
-        
-        
+        chart1.render();   
     }
 }
 
